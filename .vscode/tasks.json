@@ -8,6 +8,13 @@
 			"isBackground": true,
 			"group": "test",
 			"problemMatcher": []
+		},
+		{
+			"label": "Construir proyecto",
+			"type": "shell",
+			"command": "echo 'Configura aquí tu comando de construcción'",
+			"group": "build",
+			"problemMatcher": []
 		}
 	]
 }

@@ -19,11 +19,13 @@ body {
 .floating-logo {
     position: fixed;
     top: 50%;
-    left: 40px;
     transform: translateY(-50%);
     z-index: 1000;
     animation: floatAnimationHorizontal 6s ease-in-out infinite;
     cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    visibility: visible;
 }
 
 .floating-logo img {
@@ -58,6 +60,23 @@ body {
     top: 70px;      /* AJUSTAR: Distancia desde la parte superior del logo al párpado derecho */
     left: 110px;    /* AJUSTAR: Distancia desde la izquierda del logo al párpado derecho */
     /* Podrías necesitar ajustar width también si los ojos son de diferente tamaño */
+}
+
+/* Estilos específicos para logos izquierdo y derecho */
+.logo-left {
+    left: 40px;
+}
+
+.logo-right {
+    right: 40px;
+    left: auto;
+    border: 3px solid red !important; /* Debug temporal */
+}
+
+.hidden-logo {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
 }
 
 /* Estilos para Lightbox2 */
@@ -212,4 +231,47 @@ body {
     text-align: center;
     grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
     padding: 20px;
+}
+
+/* Animaciones para los logos */
+@keyframes floatAnimationHorizontal {
+    0%, 100% { transform: translateY(-50%) translateX(0px); }
+    50% { transform: translateY(-50%) translateX(10px); }
+}
+
+@keyframes spin-y {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@keyframes spin-x {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(360deg); }
+}
+
+@keyframes spin-z {
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(360deg); }
+}
+
+@keyframes spin-diagonal {
+    0% { transform: rotate3d(1, 1, 0, 0deg); }
+    100% { transform: rotate3d(1, 1, 0, 360deg); }
+}
+
+/* Clases para aplicar las animaciones de click */
+.spin-y { 
+    animation: spin-y 1.2s ease-in-out; 
+}
+
+.spin-x { 
+    animation: spin-x 1.2s ease-in-out; 
+}
+
+.spin-z { 
+    animation: spin-z 1.2s ease-in-out; 
+}
+
+.spin-diagonal { 
+    animation: spin-diagonal 1.2s ease-in-out; 
 }

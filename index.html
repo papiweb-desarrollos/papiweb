@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://papiweb.github.io https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://papiweb.github.io; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://papiweb.github.io https://cdnjs.cloudflare.com; connect-src 'self' https://papiweb.github.io; object-src 'none'; base-uri 'self';">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papiweb - Desarrollos Informáticos</title>
@@ -9,7 +9,29 @@
     <meta name="keywords" content="desarrollo web, aplicaciones móviles, software a medida, Papiweb, desarrollo informático, diseño web, soluciones tecnológicas, programación">
     <meta name="author" content="Papiweb">
     <link rel="canonical" href="https://papiweb.github.io/">
-    <link rel="icon" href="./public/branding/Pictures/favicon.png" type="image/png">
+    
+    <!-- Favicons optimizados -->
+    <link rel="icon" type="image/x-icon" href="./public/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./public/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./public/favicons/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./public/favicons/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="./public/favicons/favicon-128x128.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./public/favicons/favicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./public/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./public/favicons/favicon-512x512.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./public/manifest.json">
+    <meta name="theme-color" content="#00d4ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Papiweb">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#00d4ff">
+    <meta name="msapplication-config" content="./public/browserconfig.xml">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -46,15 +68,27 @@
             position: relative;
         }
 
-        /* Estilos para el logo flotante */
+        /* Estilos para los logos flotantes */
         .floating-logo {
             position: fixed;
             top: 50%;
-            left: 40px;
             transform: translateY(-50%);
             z-index: 1000;
             animation: floatAnimationHorizontal 6s ease-in-out infinite;
             cursor: pointer;
+            /* transition: left 0.5s ease-in-out, right 0.5s ease-in-out; Ya no es necesario */
+        }
+
+        .logo-left {
+            left: 40px;
+        }
+
+        .logo-right {
+            right: 40px;
+        }
+        
+        .hidden-logo {
+            display: none !important;
         }
 
         .floating-logo img {
@@ -487,162 +521,81 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin: 20px 0;
+            margin-bottom: 15px;
         }
 
-        .media-control-btn {
-            background: rgba(255, 255, 255, 0.2);
+        .media-controls button {
+            background: none;
             border: none;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
+            color: #00d4ff;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 5px;
         }
 
-        .media-control-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .media-controls button:hover {
+            color: white;
             transform: scale(1.1);
         }
-
-        .media-play-btn {
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            width: 55px;
-            height: 55px;
-            font-size: 1.5rem;
+        
+        .media-controls button:active {
+            transform: scale(0.95);
         }
 
-        .progress-container {
-            flex: 1;
-            margin: 0 15px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
+        .progress-bar-container {
+            flex-grow: 1;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
             cursor: pointer;
+            overflow: hidden;
         }
 
         .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #0099cc);
             width: 0%;
+            height: 100%;
+            background: #00d4ff;
+            border-radius: 5px;
             transition: width 0.1s linear;
         }
 
         .time-display {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 8px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: #b0b0b0;
+            min-width: 80px; /* Para evitar saltos de layout */
+            text-align: center;
         }
 
-        .volume-container {
+        .volume-controls {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .volume-slider {
             width: 80px;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            background: #00d4ff;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        
-        .volume-slider::-moz-range-thumb {
-            width: 16px;
-            height: 16px;
-            background: #00d4ff;
-            border-radius: 50%;
             cursor: pointer;
         }
 
-        .media-info {
-            text-align: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin-top: 20px;
-            min-height: 70px;
+        /* Estilo para el botón de pantalla completa */
+        .fullscreen-btn {
+            /* Hereda estilos de .media-controls button; sin estilos adicionales por ahora */
         }
 
-        .media-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #00d4ff;
-        }
-
-        .media-details {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .file-input-label {
-            display: block;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
-            margin-bottom: 20px;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .file-input-label:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0, 212, 255, 0.4);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Estilos para el explorador de archivos */
-        .media-explorer {
-            background: rgba(255, 255, 255, 0.1);
+        /* Estilos para el explorador de medios */
+        .media-explorer-card {
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(0, 212, 255, 0.2);
-            width: 100%;
-            max-width: 1200px;
+        }
+
+        .media-explorer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
         }
 
         .media-explorer-header {
@@ -881,21 +834,18 @@
     </style>
 </head>
 <body>
-    <div class="floating-logo">
-        <img src="./public/branding/papicopilot-.png" alt="Papiweb Logo Flotante">
-        <div class="eyelid left-eyelid"></div>
-        <div class="eyelid right-eyelid"></div>
-    </div>
-    <div class="logo-glow"></div>
-
     <div class="particles" id="particles"></div>
 
-    <div class="light-lines">
-        <div class="light-line"></div>
-        <div class="light-line"></div>
-        <div class="light-line"></div>
-        <div class="light-line"></div>
-        <div class="light-line"></div>
+    <!-- Logo Flotante Izquierdo -->
+    <div id="floatingLogoLeft" class="floating-logo logo-left">
+        <img src="./public/branding/papicopilot-.png" alt="Logo Papiweb Izquierdo">
+        <div class="logo-glow"></div>
+    </div>
+
+    <!-- Logo Flotante Derecho -->
+    <div id="floatingLogoRight" class="floating-logo logo-right hidden-logo">
+        <img src="./public/branding/papicopilot01.png" alt="Logo Papiweb Derecho">
+        <div class="logo-glow"></div>
     </div>
 
     <div class="main-container">
@@ -990,20 +940,20 @@
                 <button class="media-control-btn media-play-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
                 <button class="media-control-btn" id="forwardBtn"><i class="fas fa-forward"></i></button>
 
-                <div class="progress-container">
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="time-display">
-                        <span id="currentTime">0:00</span>
-                        <span id="totalDuration">0:00</span>
-                    </div>
+                <div class="progress-bar-container" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalDuration">0:00</span>
                 </div>
                 
-                <div class="volume-container">
+                <div class="volume-controls">
                     <button class="media-control-btn" id="volumeBtn"><i class="fas fa-volume-up"></i></button>
                     <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="1">
                 </div>
+
+                <button class="media-control-btn fullscreen-btn" id="fullscreenBtn"><i class="fas fa-expand"></i></button> <!-- Botón de Pantalla Completa -->
             </div>
 
             <div class="media-info">

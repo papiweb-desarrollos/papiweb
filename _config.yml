@@ -1,0 +1,59 @@
+# GitHub Pages Configuration
+
+# Configuración para Jekyll (GitHub Pages)
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Configuración del sitio
+title: "Papiweb - Desarrollos Informáticos"
+description: "Soluciones de desarrollo informático, diseño web, aplicaciones móviles y software a medida"
+url: "https://papiweb.github.io"
+baseurl: ""
+
+# Configuración de archivos
+include:
+  - _pages
+  - public
+  - branding.html
+  - papiweb_branding.html
+  - robots.txt
+  - sitemap.xml
+
+# Excluir archivos de desarrollo
+exclude:
+  - test_*.html
+  - debug_*.html
+  - DIAGNOSTICO_*.md
+  - REPORTE_*.md
+  - FAVICON_*.md
+  - README.md
+  - server.js
+  - package.json
+  - node_modules
+  - .vscode
+
+# Configuración de marca
+author: "Papiweb"
+logo: "/public/favicons/favicon-192x192.png"
+
+# Redes sociales
+social:
+  name: "Papiweb"
+  links:
+    - "https://github.com/papiweb"
+
+# SEO
+lang: "es"
+timezone: "America/Argentina/Buenos_Aires"
+
+# Configuración adicional
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+
+# GitHub Pages configuración
+repository: "papiweb/papiweb.github.io"
+github:
+  repository_url: "https://github.com/papiweb/papiweb.github.io"
