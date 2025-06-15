@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PapiWeb Branding & Multimedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/branding_styles.css"> <!-- Corregido: Eliminado /public/ -->
+    <link rel="icon" href="/branding/favicon.png" type="image/png"> <!-- Corregido: Eliminado /public/ -->
+</head>
+<body>
+    <header>
+        <h1>PapiWeb</h1>
+        <p>Branding Avanzado y Explorador Multimedia Dinámico</p>
+        <button id="contactButton" class="contact-btn">Contacto</button>
+    </header>
+
+    <div class="floating-logo-container">
+        <img src="/branding/papicopilot-.png" alt="PapiWeb Logo" id="floatingLogo" class="floating-logo"> <!-- Corregido: Eliminado /public/ -->
+    </div>
+
+    <main>
+        <section id="brandShowcase" class="brand-showcase-section">
+            <h2>Muestra de Marca</h2>
+            <!-- Contenido de muestra de marca -->
+            <div class="brand-gallery">
+                <img src="/branding/Pictures/copilot-square.webp" alt="Brand Image 1"> <!-- Corregido: Eliminado /public/ -->
+                <img src="/branding/Pictures/favicon.jpg" alt="Brand Image 2"> <!-- Corregido: Eliminado /public/ -->
+                <!-- Más imágenes de marca -->
+            </div>
+        </section>
+
+        <section id="mediaExplorerSection" class="media-explorer-section">
+            <h2>Explorador Multimedia</h2>
+            <div class="media-explorer-tabs">
+                <button class="media-explorer-tab active" data-type="images"><i class="fas fa-images"></i> Imágenes</button>
+                <button class="media-explorer-tab" data-type="videos"><i class="fas fa-video"></i> Videos</button>
+            </div>
+            <div id="mediaGrid" class="media-grid">
+                <!-- Las miniaturas se cargarán aquí por JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PapiWeb. Todos los derechos reservados.</p>
+        <p><a href="/index.html">Volver al Inicio</a></p>
+    </footer>
+
+    <!-- Modal para el explorador de medios -->
+    <div id="mediaModal" class="media-modal">
+        <span class="close-modal">&times;</span>
+        <div id="modalContent" class="modal-content-viewer"></div>
+    </div>
+
+    <!-- Modal de Contacto -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Contacto</h2>
+            <p><strong>Nombre:</strong> PapiWeb Solutions</p>
+            <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad Creativa</p>
+            <p><strong>Teléfono:</strong> +123 456 7890</p>
+            <p><strong>Email:</strong> info@papiweb.example.com</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 9 AM - 6 PM</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts movidos al final y a un archivo externo -->
+    <script src="/js/papiweb_scripts.js"></script> <!-- Corregido: Eliminado /public/ -->
+</body>
+</html>

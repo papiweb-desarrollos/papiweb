@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 40%, #0f0f23 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Estilos para el logo flotante */
+.floating-logo {
+    position: fixed;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    animation: floatAnimationHorizontal 6s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.floating-logo img {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+/* Estilos para los párpados del logo */
+.eyelid {
+    position: absolute;
+    background-color: #0f0f23; /* Un color oscuro, similar al fondo, o el color del propio logo si es más adecuado */
+    width: 50px;  /* Ancho estimado del ojo/párpado - AJUSTAR */
+    height: 0px;  /* Altura inicial (cerrado o casi cerrado, se animará a una altura para abrir/cerrar) */
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* Forma de párpado superior */
+    transform-origin: bottom center;
+    transition: height 0.15s ease-in-out; /* Transición para el parpadeo */
+    overflow: hidden; /* Para que el contenido (si lo tuviera) no se vea fuera del radio */
+    /* Los siguientes valores de top/left son cruciales y necesitarán AJUSTE FINO */
+    /* Se basan en una imagen de logo de 200px de ancho. */
+}
+
+.left-eyelid {
+    top: 70px;      /* AJUSTAR: Distancia desde la parte superior del logo al párpado izquierdo */
+    left: 40px;     /* AJUSTAR: Distancia desde la izquierda del logo al párpado izquierdo */
+    /* Podrías necesitar ajustar width también si los ojos son de diferente tamaño */
+}
+
+.right-eyelid {
+    top: 70px;      /* AJUSTAR: Distancia desde la parte superior del logo al párpado derecho */
+    left: 110px;    /* AJUSTAR: Distancia desde la izquierda del logo al párpado derecho */
+    /* Podrías necesitar ajustar width también si los ojos son de diferente tamaño */
+}
+
+/* Estilos para Lightbox2 */
+.lightboxOverlay {
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+.lb-data .lb-caption {
+    color: #eee !important;
+    font-size: 1.1em !important;
+}
+
+.lb-data .lb-number {
+    color: #ccc !important;
+}
+
+/* Estilos del footer */
+.footer {
+    background-color: rgba(15, 15, 35, 0.8); /* Fondo oscuro semi-transparente */
+    color: #ccc;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid #303050; /* Línea superior sutil */
+    position: relative;
+    z-index: 20;
+    margin-top: 50px; /* Espacio antes del footer */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.footer-links a {
+    color: #00d4ff; /* Azul neón característico */
+    text-decoration: none;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00d4ff;
+}
+
+.footer p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Botón Volver Arriba */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 212, 255, 0.7); /* Azul neón con transparencia */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Oculto por defecto */
+    z-index: 1001;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+#scrollToTopBtn:hover {
+    background-color: rgba(0, 212, 255, 1);
+}
+
+/* Estilos para el explorador de medios */
+.media-explorer-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.media-explorer-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.media-explorer-tab.active {
+    background-color: #00d4ff;
+    color: #1a1a2e;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.media-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+.media-item img, .media-item video { /* Includes video thumbnails which are currently img elements */
+    width: 100%; /* Ocupar todo el ancho del contenedor .media-item */
+    height: 150px; /* Altura fija para la imagen/miniatura, ajustar si es necesario */
+    object-fit: cover; /* Cubre el área, mantiene la relación de aspecto, recorta si es necesario */
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: rgba(0,0,0,0.2); /* Fondo por si la imagen tarda en cargar o no tiene el aspect ratio exacto */
+}
+
+.media-item p {
+    font-size: 0.9em;
+    color: #eee;
+    word-wrap: break-word;
+}
+
+.no-media {
+    color: #ccc;
+    text-align: center;
+    grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
+    padding: 20px;
+}

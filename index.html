@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://papiweb.github.io https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papiweb - Desarrollos Informáticos</title>
+    <meta name="description" content="Papiweb ofrece soluciones de desarrollo informático, diseño web, aplicaciones móviles y software a medida. Expertos en tecnología para potenciar tu negocio.">
+    <meta name="keywords" content="desarrollo web, aplicaciones móviles, software a medida, Papiweb, desarrollo informático, diseño web, soluciones tecnológicas, programación">
+    <meta name="author" content="Papiweb">
+    <link rel="canonical" href="https://papiweb.github.io/">
+    <link rel="icon" href="./public/branding/Pictures/favicon.png" type="image/png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://papiweb.github.io/">
+    <meta property="og:title" content="Papiweb - Desarrollos Informáticos">
+    <meta property="og:description" content="Papiweb ofrece soluciones de desarrollo informático, diseño web, aplicaciones móviles y software a medida. Expertos en tecnología para potenciar tu negocio.">
+    <meta property="og:image" content="https://papiweb.github.io/public/branding/Pictures/copiPapiweb.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://papiweb.github.io/">
+    <meta property="twitter:title" content="Papiweb - Desarrollos Informáticos">
+    <meta property="twitter:description" content="Papiweb ofrece soluciones de desarrollo informático, diseño web, aplicaciones móviles y software a medida. Expertos en tecnología para potenciar tu negocio.">
+    <meta property="twitter:image" content="https://papiweb.github.io/public/branding/Pictures/copiPapiweb.jpg">
+
+    <link rel="stylesheet" href="./public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY99LVPqcLxSarcNcJ重+k7Wtrg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 40%, #0f0f23 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Estilos para el logo flotante */
+        .floating-logo {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            animation: floatAnimationHorizontal 6s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .floating-logo img {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        /* Animaciones de giro */
+        @keyframes spinY {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes spinX {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(360deg); }
+        }
+
+        @keyframes spinZ {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spinDiagonal {
+            0% { transform: rotate(0deg) rotateY(0deg); }
+            100% { transform: rotate(360deg) rotateY(360deg); }
+        }
+
+        .spin-y { animation: spinY 1s ease-out; }
+        .spin-x { animation: spinX 1s ease-out; }
+        .spin-z { animation: spinZ 1s ease-out; }
+        .spin-diagonal { animation: spinDiagonal 1.2s ease-out; }
+
+        .floating-logo:hover img {
+            transform: scale(1.1);
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatAnimationHorizontal {
+            0%, 100% {
+                transform: translateY(-50%) translateX(0px);
+            }
+            50% {
+                transform: translateY(-50%) translateX(10px);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Partículas de fondo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contenedor principal */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Logo 3D multicapa */
+        .logo-container {
+            perspective: 1000px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo-3d {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            transform-style: preserve-3d;
+            animation: rotate3d 12s infinite linear;
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(5deg); }
+            25% { transform: rotateY(90deg) rotateX(10deg); }
+            50% { transform: rotateY(180deg) rotateX(5deg); }
+            75% { transform: rotateY(270deg) rotateX(10deg); }
+            100% { transform: rotateY(360deg) rotateX(5deg); }
+        }
+
+        .logo-layer {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+        }
+
+        .logo-layer-1 {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            transform: translateZ(30px);
+            animation: pulse1 3s infinite ease-in-out;
+        }
+
+        .logo-layer-2 {
+            background: linear-gradient(45deg, #0099cc, #006699);
+            transform: translateZ(15px);
+            animation: pulse2 3s infinite ease-in-out 0.5s;
+        }
+
+        .logo-layer-3 {
+            background: linear-gradient(45deg, #006699, #003366);
+            transform: translateZ(0px);
+            animation: pulse3 3s infinite ease-in-out 1s;
+        }
+
+        @keyframes pulse1 {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(0, 212, 255, 0.8); }
+        }
+
+        @keyframes pulse2 {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 153, 204, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 153, 204, 0.8); }
+        }
+
+        @keyframes pulse3 {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 102, 153, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 102, 153, 0.8); }
+        }
+
+        /* Título principal */
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .title-word {
+            display: inline-block;
+            margin: 0 10px;
+            position: relative;
+            animation: titleGlow 4s infinite alternate;
+        }
+
+        .title-word-1 {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+            animation-delay: 0s;
+        }
+
+        .title-word-2 {
+            background: linear-gradient(45deg, #4ecdc4, #45b7b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(78, 205, 196, 0.5);
+            animation-delay: 1s;
+        }
+
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: 0 0 20px currentColor;
+                transform: translateY(0px);
+            }
+            100% { 
+                text-shadow: 0 0 40px currentColor, 0 0 60px currentColor;
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Subtítulo */
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            animation: subtitlePulse 3s infinite ease-in-out;
+        }
+
+        @keyframes subtitlePulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* Servicios con efectos 3D */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px) rotateX(10deg);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.6);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            animation: iconFloat 3s infinite ease-in-out;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .service-description {
+            color: #b0b0b0;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        /* Líneas de luz dinámicas */
+        .light-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .light-line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #00d4ff, transparent);
+            animation: lightMove 4s infinite linear;
+            opacity: 0.3;
+        }
+
+        .light-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .light-line:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .light-line:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .light-line:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .light-line:nth-child(5) { left: 90%; animation-delay: 0.5s; }
+
+        @keyframes lightMove {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Estilos del reproductor multimedia */
+        .media-player-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .media-container {
+            position: relative;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-player {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: none; /* Hidden by default */
+        }
+        
+        .audio-player {
+            display: none; /* Also hidden */
+        }
+
+        .audio-visualizer {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .audio-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+            color: #00d4ff;
+        }
+
+        .wave-container {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .wave-bar {
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to top, #00d4ff, #0099cc);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1.5); }
+        }
+
+        .media-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .media-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .media-play-btn {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            width: 55px;
+            height: 55px;
+            font-size: 1.5rem;
+        }
+
+        .progress-container {
+            flex: 1;
+            margin: 0 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 80px;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #00d4ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .media-info {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            min-height: 70px;
+        }
+
+        .media-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #00d4ff;
+        }
+
+        .media-details {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-input-label {
+            display: block;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+            margin-bottom: 20px;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos para el explorador de archivos */
+        .media-explorer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .media-explorer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .media-explorer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .media-explorer-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .media-explorer-tab {
+            padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .media-explorer-tab.active {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-color: transparent;
+        }
+
+        .media-explorer-tab:hover:not(.active) {
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .media-item img, .media-item .item-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-item .item-icon {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .media-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .media-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover .media-item-overlay {
+            transform: translateY(0);
+        }
+
+        .media-item-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .media-item-info {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Estilo para la barra de desplazamiento del grid */
+        .media-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .media-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .media-grid::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-radius: 4px;
+        }
+
+        .media-grid::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
+        }
+
+        /* Estilos del Footer */
+        footer {
+            background: rgba(15, 15, 35, 0.8); /* Fondo oscuro semi-transparente */
+            color: #a0a0c0; /* Color de texto ligeramente apagado */
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(0, 212, 255, 0.2); /* Línea superior sutil */
+            margin-top: 50px; /* Espacio antes del footer */
+        }
+
+        footer p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            color: #00d4ff; /* Color cian característico */
+            margin: 0 12px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffffff; /* Blanco al pasar el ratón */
+            transform: scale(1.2);
+        }
+
+        /* Estilos del Botón Volver Arriba */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none; /* Oculto por defecto */
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
+            transform: scale(1.1);
+        }
+
+        /* Estilos para Lightbox2 */
+        .lightboxOverlay {
+            background-color: rgba(0,0,0,0.8) !important;
+        }
+
+        .lb-data .lb-caption {
+            color: #eee !important;
+            font-size: 1.1em !important;
+        }
+
+        .lb-data .lb-number {
+            color: #ccc !important;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Estilos adicionales para los párpados del logo flotante */
+        .eyelid {
+            position: absolute;
+            width: 60px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .left-eyelid {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        .right-eyelid {
+            top: 20px;
+            right: 50%;
+            transform: translateX(50%) rotate(0deg);
+        }
+
+        .floating-logo:hover .eyelid {
+            transform: translateX(-50%) rotate(15deg);
+        }
+
+        .floating-logo:hover .right-eyelid {
+            transform: translateX(50%) rotate(-15deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-logo">
+        <img src="./public/branding/papicopilot-.png" alt="Papiweb Logo Flotante">
+        <div class="eyelid left-eyelid"></div>
+        <div class="eyelid right-eyelid"></div>
+    </div>
+    <div class="logo-glow"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="light-lines">
+        <div class="light-line"></div>
+        <div class="light-line"></div>
+        <div class="light-line"></div>
+        <div class="light-line"></div>
+        <div class="light-line"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="logo-container">
+            <div class="logo-3d">
+                <div class="logo-layer logo-layer-1"><i class="fas fa-code"></i></div>
+                <div class="logo-layer logo-layer-2"><i class="fas fa-laptop-code"></i></div>
+                <div class="logo-layer logo-layer-3"><i class="fas fa-server"></i></div>
+            </div>
+        </div>
+
+        <h1 class="main-title">
+            <span class="title-word title-word-1">PAPIWEB</span>
+            <span class="title-word title-word-2">DESARROLLOS</span>
+        </h1>
+
+        <p class="subtitle">INFORMÁTICOS AVANZADOS</p>
+
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-globe-americas"></i></div>
+                <h3 class="service-title">Desarrollo Web</h3>
+                <p class="service-description">Creamos sitios web modernos y responsive con las últimas tecnologías. Desde landing pages hasta aplicaciones web complejas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3 class="service-title">Apps Móviles</h3>
+                <p class="service-description">Desarrollo de aplicaciones móviles nativas e híbridas para iOS y Android con interfaces intuitivas y rendimiento optimizado.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-database"></i></div>
+                <h3 class="service-title">Sistemas Backend</h3>
+                <p class="service-description">Arquitecturas robustas y escalables. APIs RESTful, bases de datos optimizadas y sistemas de alta disponibilidad.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                <h3 class="service-title">Cloud Computing</h3>
+                <p class="service-description">Migración a la nube, DevOps, contenedores Docker y despliegues automatizados en AWS, Azure y Google Cloud.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="service-title">Ciberseguridad</h3>
+                <p class="service-description">Auditorías de seguridad, implementación de protocolos de protección y consultoría en ciberseguridad empresarial.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="service-title">Business Intelligence</h3>
+                <p class="service-description">Análisis de datos, dashboards interactivos y sistemas de reportería para la toma de decisiones empresariales.</p>
+            </div>
+        </div>
+
+        <div class="media-explorer">
+            <div class="media-explorer-header">
+                <h3 class="media-explorer-title"><i class="fas fa-photo-video"></i> Explorador Multimedia</h3>
+            </div>
+            <div class="media-explorer-tabs">
+                <button class="media-explorer-tab active" data-type="pictures"><i class="fas fa-images"></i> Imágenes</button>
+                <button class="media-explorer-tab" data-type="videos"><i class="fas fa-video"></i> Videos</button>
+            </div>
+            <div class="media-grid" id="mediaGrid">
+                </div>
+        </div>
+
+        <div class="media-player-card">
+            <div class="service-icon"><i class="fas fa-play-circle"></i></div>
+            <h3 class="service-title">Reproductor Multimedia Pro</h3>
+            
+            <div class="file-input-container">
+                <input type="file" id="fileInput" class="file-input" accept="audio/*,video/*">
+                <label for="fileInput" class="file-input-label"><i class="fas fa-cloud-upload-alt"></i> Seleccionar Archivo Local</label>
+            </div>
+
+            <div class="media-container" id="mediaContainer">
+                <video class="video-player" id="videoPlayer"></video>
+                <audio class="audio-player" id="audioPlayer"></audio>
+                <div class="audio-visualizer" id="defaultView">
+                    <i class="fas fa-music audio-icon"></i>
+                    <div class="wave-container">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-controls">
+                <button class="media-control-btn" id="rewindBtn"><i class="fas fa-backward"></i></button>
+                <button class="media-control-btn media-play-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
+                <button class="media-control-btn" id="forwardBtn"><i class="fas fa-forward"></i></button>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="totalDuration">0:00</span>
+                    </div>
+                </div>
+                
+                <div class="volume-container">
+                    <button class="media-control-btn" id="volumeBtn"><i class="fas fa-volume-up"></i></button>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+
+            <div class="media-info">
+                <p class="media-title">Selecciona un archivo</p>
+                <p class="media-details">o explora la galería multimedia</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Papiweb Desarrollos. Todos los derechos reservados.</p>
+        <p>
+            <a href="mailto:mgenialive@gmail.com" style="color: #00d4ff; text-decoration: none;">mgenialive@gmail.com</a> | 
+            <a href="tel:+541165728549" style="color: #00d4ff; text-decoration: none;">+54 11 6572-8549</a>
+        </p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook Papiweb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter Papiweb"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn Papiweb"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub Papiweb"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Volver Arriba" aria-label="Volver al inicio de la página"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./public/js/index_scripts.js"></script>
+</body>
+</html>

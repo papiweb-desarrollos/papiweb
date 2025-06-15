@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://papiweb.github.io/sitemap.xml
