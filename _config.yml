@@ -19,6 +19,9 @@ include:
   - papiweb_branding.html
   - robots.txt
   - sitemap.xml
+  - media.json
+  - manifest.json
+  - favicons
 
 # Excluir archivos de desarrollo
 exclude:
@@ -35,7 +38,7 @@ exclude:
 
 # Configuración de marca
 author: "Papiweb"
-logo: "/public/favicons/favicon-192x192.png"
+logo: "/favicons/favicon-192x192.png"
 
 # Redes sociales
 social:

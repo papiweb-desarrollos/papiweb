@@ -382,7 +382,14 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadBrandingPictures() {
         console.log("[loadBrandingPictures] Iniciando carga de imágenes de branding...");
         try {
-            const response = await fetch('/public/media.json'); // MODIFICADO: Cargar JSON local
+            // Intentar primero desde la raíz, luego desde public
+            let response;
+            try {
+                response = await fetch('./media.json');
+                if (!response.ok) throw new Error('Not found in root');
+            } catch {
+                response = await fetch('./public/media.json');
+            }
             console.log("[loadBrandingPictures] Respuesta de media.json recibida, estado:", response.status);
             if (!response.ok) {
                 const errorText = await response.text();
@@ -428,7 +435,14 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadBrandingVideos() {
         console.log("[loadBrandingVideos] Iniciando carga de videos de branding...");
         try {
-            const response = await fetch('/public/media.json'); // MODIFICADO: Cargar JSON local
+            // Intentar primero desde la raíz, luego desde public
+            let response;
+            try {
+                response = await fetch('./media.json');
+                if (!response.ok) throw new Error('Not found in root');
+            } catch {
+                response = await fetch('./public/media.json');
+            }
             console.log("[loadBrandingVideos] Respuesta de media.json recibida, estado:", response.status);
             if (!response.ok) {
                 console.error('Failed to fetch media.json for videos:', response.status, await response.text());
@@ -768,7 +782,14 @@ const mediaData = {
 async function loadBrandingPictures() {
     console.log("[loadBrandingPictures] Iniciando carga de imágenes de branding...");
     try {
-        const response = await fetch('/public/media.json'); // MODIFICADO: Cargar JSON local
+        // Intentar primero desde la raíz, luego desde public
+        let response;
+        try {
+            response = await fetch('./media.json');
+            if (!response.ok) throw new Error('Not found in root');
+        } catch {
+            response = await fetch('./public/media.json');
+        }
         console.log("[loadBrandingPictures] Respuesta de media.json recibida, estado:", response.status);
         if (!response.ok) {
             const errorText = await response.text();
