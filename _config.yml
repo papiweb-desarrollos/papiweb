@@ -8,8 +8,8 @@ plugins:
 # Configuración del sitio
 title: "Papiweb - Desarrollos Informáticos"
 description: "Soluciones de desarrollo informático, diseño web, aplicaciones móviles y software a medida"
-url: "https://papiweb.github.io"
-baseurl: ""
+url: "https://papiweb-desarrollos.github.io"
+baseurl: "/papiweb"
 
 # Configuración de archivos
 include:
@@ -57,6 +57,6 @@ sass:
   style: compressed
 
 # GitHub Pages configuración
-repository: "papiweb/papiweb.github.io"
+repository: "papiweb-desarrollos/papiweb"
 github:
-  repository_url: "https://github.com/papiweb/papiweb.github.io"
+  repository_url: "https://github.com/papiweb-desarrollos/papiweb"
